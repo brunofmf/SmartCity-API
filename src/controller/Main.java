@@ -53,14 +53,14 @@ public class Main {
 		//PollutionOWM p3 = OwmClient.getCurrentNitrogenDioxide();				//OK - 20180517 (but getting 504 Gateway Time-out)
 		//System.out.println(p3.toString());
 		
-		//List<PollutionAQ> mes = OpenAQClient.getCurrentMeasurements();		//OK - 20180517
-		//System.out.println(mes.toString());
+		List<PollutionAQ> mes = OpenAQClient.getCurrentMeasurements();			//OK - 20180517
+		System.out.println(mes.toString());
 		
-		//System.out.println(Functions.getCurrentLuminosity().toString());		//OK - 20180517
+		System.out.println(Functions.getCurrentLuminosity().toString());		//OK - 20180517
 		
 
-		List<TrafficIncident> ti = TomtomClient.getTrafficIncidents();			//OK - 20180517
-		System.out.println(ti.toString());
+		//List<TrafficIncident> ti = TomtomClient.getTrafficIncidents();		//OK - 20180517
+		//System.out.println(ti.toString());
 
 		//List<TrafficFlow> tf = TomtomClient.getTrafficFlow();					//OK - 20180517
 		//System.out.println(tf.toString());
