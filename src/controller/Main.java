@@ -56,7 +56,7 @@ public class Main {
 		List<PollutionAQ> mes = OpenAQClient.getCurrentMeasurements();			//OK - 20180517
 		System.out.println(mes.toString());
 		
-		System.out.println(Functions.getCurrentLuminosity().toString());		//OK - 20180517
+		//System.out.println(Functions.getCurrentLuminosity().toString());		//OK - 20180517
 		
 
 		//List<TrafficIncident> ti = TomtomClient.getTrafficIncidents();		//OK - 20180517
