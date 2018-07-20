@@ -19,12 +19,15 @@ public class TomtomClient {
 	
 	public static boolean logInfo 		= false;
 	//Variables for Traffic Incident
-	public static String cityMinLat		= Consts.TOMTOM_BRAGA_MIN_LAT; 	//by default, Braga min lat
-	public static String cityMinLon		= Consts.TOMTOM_BRAGA_MIN_LON; 	//by default, Braga min lon
-	public static String cityMaxLat		= Consts.TOMTOM_BRAGA_MAX_LAT; 	//by default, Braga max lat
-	public static String cityMaxLon		= Consts.TOMTOM_BRAGA_MAX_LON; 	//by default, Braga max lon
+	public static String cityMinLat		= "41.506531"; 	//by default, Braga min lat
+	public static String cityMinLon		= "-8.451247"; 	//by default, Braga min lon
+	public static String cityMaxLat		= "41.574115"; 	//by default, Braga max lat
+	public static String cityMaxLon		= "-8.371253"; 	//by default, Braga max lon
 	//Variables for Traffic Flow
-	public static String flowCityPoint	= Consts.TOMTOM_BRAGA_POINT; 	//by default, Braga max lon
+	public static String flowCityLat	= "41.546007"; 	//by default, Braga lat
+    public static String flowCityLon    = "-8.419903";  //by default, Braga lon
+    
+    public static String tomtomApiKey   = "";           //default value, if needed, may be API_KEY
 
 	public static List<TrafficIncident> getTrafficIncidents() {
 		try {
@@ -51,14 +54,13 @@ public class TomtomClient {
 		String apiCall = "";
 		
 		if(type.compareTo(Consts.TOMTOM_INCIDENT_DETAILS) == 0)
-			apiCall = Consts.TOMTOM_STATIC_CALL + type + Consts.TOMTOM_STYLE + cityMinLat + cityMinLon + cityMaxLat + cityMaxLon 
-				+ Consts.TOMTOM_ZOOM + Consts.TOMTOM_TRAFFIC_MODEL_ID + Consts.TOMTOM_DATA_TYPE + Consts.TOMTOM_API_KEY 
+			apiCall = Consts.TOMTOM_STATIC_CALL + type + Consts.TOMTOM_STYLE + cityMinLat + "," + cityMinLon + "," + cityMaxLat + "," + cityMaxLon + "/" 
+				+ Consts.TOMTOM_ZOOM + Consts.TOMTOM_TRAFFIC_MODEL_ID + Consts.TOMTOM_DATA_TYPE + "?key=" + tomtomApiKey
 				+ Consts.TOMTOM_PROJECTION + Consts.TOMTOM_LANGUAGE + Consts.TOMTOM_EXPAND_CLUSTER + Consts.TOMTOM_ORIGINAL_POSITION;
 		else
-			apiCall = Consts.TOMTOM_STATIC_CALL + type + Consts.TOMTOM_FLOW_STYLE + Consts.TOMTOM_ZOOM + Consts.TOMTOM_DATA_TYPE + Consts.TOMTOM_API_KEY 
-			+ flowCityPoint + Consts.TOMTOM_FLOW_UNIT;
+			apiCall = Consts.TOMTOM_STATIC_CALL + type + Consts.TOMTOM_FLOW_STYLE + Consts.TOMTOM_ZOOM + Consts.TOMTOM_DATA_TYPE + "?key=" + tomtomApiKey
+			+ "&point=" + flowCityLat + "," + flowCityLon + Consts.TOMTOM_FLOW_UNIT;
 			
-
 		if(logInfo)
 			System.out.println("API CALL: " + apiCall);
 		

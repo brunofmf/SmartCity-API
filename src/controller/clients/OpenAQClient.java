@@ -17,7 +17,7 @@ import util.Consts;
 public class OpenAQClient {
 	
 	public static boolean logInfo 	= false;
-	public static String cityId		= Consts.OPEN_AQ_BRAGA_CITY; 	//by default, Braga ID; Override to get other city
+	public static String cityId		= "Braga"; 	//by default, Braga ID - override to get data for another city
 
 	public static List<PollutionAQ> getCurrentMeasurements() {
 		try {
@@ -32,7 +32,7 @@ public class OpenAQClient {
 	 * @param type 			(ex.: latest? ...)
 	 **/	
 	private static Object callAPI(String type) throws Exception {
-		String apiCall = Consts.OPEN_AQ_STATIC_CALL + type + cityId;
+		String apiCall = Consts.OPEN_AQ_STATIC_CALL + type + "city=" + cityId;
 
 		if(logInfo)
 			System.out.println(apiCall);

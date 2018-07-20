@@ -6,12 +6,14 @@ public abstract class AbstractTrafficIncident {
 	protected double trafficLat;
 	protected double trafficLon;
 	protected long date;
+    protected String cityName;
 	
 	//Constructor
-	public AbstractTrafficIncident(double trafficLat, double trafficLon, long date) {
+	public AbstractTrafficIncident(double trafficLat, double trafficLon, long date, String cityName) {
 		this.trafficLat = trafficLat;
 		this.trafficLon = trafficLon;
 		this.date = date;
+		this.cityName = cityName;
 	}
 	
 	public double getTrafficLat() {
@@ -25,6 +27,10 @@ public abstract class AbstractTrafficIncident {
 	public long getDate() {
 		return date;
 	}
+    
+    public String getCityName() {
+        return cityName;
+    }
 
 	public void setTrafficLat(double trafficLat) {
 		this.trafficLat = trafficLat;
@@ -36,6 +42,10 @@ public abstract class AbstractTrafficIncident {
 	
 	public void setDate(long date) {
 		this.date = date;
+	}
+	
+	public void setCityName(String cityName) {
+	    this.cityName = cityName;
 	}
 
 	public abstract String toString();

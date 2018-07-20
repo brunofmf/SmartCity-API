@@ -3,20 +3,23 @@ package model.weather.owm;
 import java.util.Date;
 
 import model.weather.AbstractWeather;
+import util.Functions;
 
 public class Weather extends AbstractWeather{
 
 	//Class Variables
 	protected long sunrise;
 	protected long sunset;
+	protected String luminosityDegree;
 	
 	//Constructor
 	public Weather(String weatherDescription, int temperature, int pressure, int humidity, int windSpeed,
 			int clouds, int rain, long calculationDate, String cityName, long sunrise, long sunset) {
 		super(weatherDescription, temperature, pressure, humidity, windSpeed, clouds, rain, calculationDate*1000, cityName);
-		//Instead of time since epoch linux set miliseconds - thus avoiding Date.from(Instant.ofEpochSecond(...))
+		//Instead of time since epoch linux set milliseconds - thus avoiding Date.from(Instant.ofEpochSecond(...))
 		this.sunrise = sunrise*1000;
 		this.sunset = sunset*1000;
+		this.luminosityDegree = Functions.getCurrentLuminosity(this).toString();
 	}
 	
 	public long getSunrise() {
@@ -26,6 +29,10 @@ public class Weather extends AbstractWeather{
 	public long getSunset() {
 		return sunset;
 	}	
+    
+    public String getLuminosityDegree() {
+        return luminosityDegree;
+    }   
 	
 	public void setSunrise(long sunrise) {
 		this.sunrise = sunrise;
@@ -34,6 +41,10 @@ public class Weather extends AbstractWeather{
 	public void setSunset(long sunset) {
 		this.sunset = sunset;
 	}
+    
+    public void setLuminosityDegree(String luminosityDegree) {
+        this.luminosityDegree = luminosityDegree;
+    }
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

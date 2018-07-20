@@ -10,7 +10,7 @@ import model.weather.owm.Weather;
 
 public class Functions {
 	
-	private final static long MILLISECONDS_LUMINOSITY_MARGIN = 1800000;//milliseconds of margin for brightness by the morning and evening - default 30 min
+	private final static long MILLISECONDS_LUMINOSITY_MARGIN = 1800000; //milliseconds of margin for brightness by the morning and evening - default 30 min
 	
 	public enum DayLuminosity {
 	    DARK,
@@ -23,9 +23,8 @@ public class Functions {
 	 * Function to model luminosity along the day 
 	 * @throws Exception 
 	 * */	
-	public static DayLuminosity getCurrentLuminosity() {		
+	public static DayLuminosity getCurrentLuminosity(Weather currWeather) {		
 		long currTime = System.currentTimeMillis();
-		Weather currWeather = OwmClient.getCurrentWeather();
 		if(currWeather != null) {
 			if(currTime < currWeather.getSunrise() || currTime > currWeather.getSunset())
 				return DayLuminosity.DARK;

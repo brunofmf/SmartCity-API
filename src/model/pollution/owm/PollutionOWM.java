@@ -12,7 +12,7 @@ public class PollutionOWM extends AbstractPollution{
 	protected PollutionType parameter; 	
 	//Variable only to be used in case of OZONE or UV pollution
 	protected double value;
-	//Lists of Value and Precision to be used otherwise
+	//Lists of Value and Precision to be used
 	protected List<List<Double>> data;
 	
 	public enum PollutionType {
@@ -63,22 +63,22 @@ public class PollutionOWM extends AbstractPollution{
 		    	break;
 		    case "CO":
 				this.parameter = PollutionType.CO;
-				this.value = -1.0;
+				this.value = -99.0;
 				this.data = clone(data);
 		    	break;
 		    case "SO2":
 				this.parameter = PollutionType.SO2;
-				this.value = -1.0;
+				this.value = -99.0;
 				this.data = clone(data);
 		    	break;
 		    case "NO2":
 				this.parameter = PollutionType.NO2;
-				this.value = -1.0;
+				this.value = -99.0;
 				this.data = clone(data);
 		    	break;
 		    default:
 				this.parameter = PollutionType.NA;
-				this.value = -1.0;
+				this.value = -99.0;
 				this.data = null;
 		    ;
 		}
@@ -93,11 +93,31 @@ public class PollutionOWM extends AbstractPollution{
 	}
 	
 	public double getValue() {
-		return value;
+        if(!Double.isNaN(value))
+            return value;
+        else
+            return -99;
 	}
 	
 	public void setValue(double value) {
 		this.value = value;
+	}
+	
+	public double[] getMeanValuePrecision() {
+	    double mean[] = new double[]{0.0, 0.0}; //mean of Value/Precision
+	    int validElements = 0;
+	    if(value == -99.0) {
+	        for(List<Double> values : data) {
+	            if(!Double.isNaN(values.get(0)) && !Double.isNaN(values.get(1))) {
+    	            mean[0]+=values.get(0); //Value
+                    mean[1]+=values.get(1); //Precision
+                    validElements++;
+	            }
+	        }
+	        mean[0] = mean[0]/validElements;
+            mean[1] = mean[1]/validElements;
+	    }
+	    return mean;
 	}
 	
 	private List<List<Double>> clone(List<List<Double>> data) {

@@ -19,11 +19,15 @@ import util.Consts;
 
 public class OwmClient {
 	
-	public static boolean logInfo 			= false;
-	public static String cityId 			= Consts.OPEN_WEATHER_BRAGA_ID; 	//by default, Braga ID; Override to get other city
-	public static String cityLat 			= Consts.OPEN_WEATHER_BRAGA_LAT; 	//by default, Braga Latitude; Override to get other city's latitude
-	public static String cityLon 			= Consts.OPEN_WEATHER_BRAGA_LON; 	//by default, Braga longitude; Override to get other city's longitude
-	public static String cityPollutionCall	= Consts.OPEN_WEATHER_POLL_BRAGA_0;	//by default, for pollution call get Braga latitude + longitude; Override to get other city's lat + lon
+	public static boolean logInfo              = false;
+	
+	public static String cityId 			   = "8010448"; //by default, Braga ID; Override to get other city
+	public static String cityLat 			   = "41.54"; 	//by default, Braga Latitude; Override to get other city's latitude
+	public static String cityLon 			   = "-8.43"; 	//by default, Braga longitude; Override to get other city's longitude
+	public static String cityPollutionCallLat  = "41";	    //by default, for pollution call get Braga latitude + longitude; Override to get other city's lat + lon
+    public static String cityPollutionCallLon  = "-8";      //by default, for pollution call get Braga latitude + longitude; Override to get other city's lat + lon
+	
+    public static String owmApiKey             = "";        //Default value, if needed, may be API_KEY
 		
 	public static Weather getCurrentWeather() {
 		try {
@@ -104,11 +108,11 @@ public class OwmClient {
 		String apiCall = "";
 		
 		if(type.compareTo(Consts.OPEN_WEATHER_TYPE_WEATHER) == 0 || type.compareTo(Consts.OPEN_WEATHER_TYPE_FORESCAST) == 0) //Weather
-			apiCall = Consts.OPEN_WEATHER_STATIC_CALL + type + Consts.OPEN_WEATHER_API_KEY + cityId + Consts.OPEN_WEATHER_METRICS_CALL + Consts.OPEN_WEATHER_LANG_CALL;
+			apiCall = Consts.OPEN_WEATHER_STATIC_CALL + type + "APPID=" + owmApiKey + "&id=" + cityId + Consts.OPEN_WEATHER_METRICS_CALL + Consts.OPEN_WEATHER_LANG_CALL;
 		else if(type.compareTo(Consts.OPEN_WEATHER_TYPE_UV) == 0 || type.compareTo(Consts.OPEN_WEATHER_TYPE_UV_FORECAST) == 0) //UV
-			apiCall = Consts.OPEN_WEATHER_STATIC_CALL + type + Consts.OPEN_WEATHER_API_KEY + cityLat + cityLon;
+			apiCall = Consts.OPEN_WEATHER_STATIC_CALL + type + "APPID=" + owmApiKey + "&lat=" + cityLat + "&lon=" + cityLon;
 		else //Pollution
-			apiCall = type + cityPollutionCall + Consts.OPEN_WEATHER_POLLUTION_DATE + Consts.OPEN_WEATHER_API_KEY;
+			apiCall = type + cityPollutionCallLat + "," + cityPollutionCallLon + "/" + Consts.OPEN_WEATHER_POLLUTION_DATE + "APPID=" + owmApiKey;
 
 		if(logInfo)
 			System.out.println("API CALL: " + apiCall);

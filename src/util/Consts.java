@@ -15,7 +15,6 @@ public final class Consts {
 	public final static String OPEN_WEATHER_NITROGEN_DIOXIDE= "http://api.openweathermap.org/pollution/v1/no2/";
 
 	//OpenWeatherMaps Parameters
-	public final static String OPEN_WEATHER_API_KEY 		= "APPID=API_KEY"; 
 	public final static String OPEN_WEATHER_TYPE_WEATHER 	= "weather?";
 	public final static String OPEN_WEATHER_TYPE_FORESCAST 	= "forecast?";
 	public final static String OPEN_WEATHER_TYPE_UV 		= "uvi?";
@@ -23,11 +22,11 @@ public final class Consts {
 	public final static String OPEN_WEATHER_METRICS_CALL	= "&units=metric";
 	public final static String OPEN_WEATHER_LANG_CALL		= "&lang=pt";
 	
-	public final static String OPEN_WEATHER_BRAGA_ID		= "&id=8010448";
-	public final static String OPEN_WEATHER_BRAGA_LAT		= "&lat=41.54";
-	public final static String OPEN_WEATHER_BRAGA_LON		= "&lon=-8.43";
-	public final static String OPEN_WEATHER_POLL_BRAGA_0	= "41,-8/"; //No decimal point for ~80Kms search
-	public final static String OPEN_WEATHER_POLL_BRAGA_1	= "41.5,-8.4/"; //One decimal point for ~8Kms search
+	//public final static String OPEN_WEATHER_BRAGA_ID		= "&id=8010448";
+	//public final static String OPEN_WEATHER_BRAGA_LAT		= "&lat=41.54";
+	//public final static String OPEN_WEATHER_BRAGA_LON		= "&lon=-8.43";
+	//public final static String OPEN_WEATHER_POLL_BRAGA_0	= "41,-8/"; //No decimal point for ~80Kms search
+	//public final static String OPEN_WEATHER_POLL_BRAGA_1	= "41.5,-8.4/"; //One decimal point for ~8Kms search
 	public final static String OPEN_WEATHER_POLLUTION_DATE	= "current.json?"; 	//Use "2018-03Z" to look for all data on 03/2018; "current" searches for the latest available data point up until now
 
 	//Current Weather Constants
@@ -82,7 +81,7 @@ public final class Consts {
 	//OpenAQ Types
 	public final static String OPEN_AQ_STATIC_CALL 			= "https://api.openaq.org/v1/";
 	public final static String OPEN_AQ_LATEST			 	= "latest?";
-	public final static String OPEN_AQ_BRAGA_CITY			= "city=Braga";
+	//public final static String OPEN_AQ_BRAGA_CITY			= "city=Braga";
 	
 	public final static String JSON_RESULTS					= "results";
 	public final static String JSON_MEASUREMENTS			= "measurements";
@@ -98,12 +97,12 @@ public final class Consts {
 	public final static String TOMTOM_STATIC_CALL 			= "https://api.tomtom.com/traffic/services/4/";
 	public final static String TOMTOM_INCIDENT_DETAILS		= "incidentDetails/";
 	public final static String TOMTOM_TRAFFIC_FLOW 			= "flowSegmentData/";
-	public final static String TOMTOM_API_KEY 				= "?key=API_KEY"; 
+	//public final static String TOMTOM_API_KEY 				= "?key=iTiGqPRRsUAIU7DfMJafzT0BRdlCavV5"; 
 	public final static String TOMTOM_STYLE					= "s3/"; 
-	public final static String TOMTOM_BRAGA_MIN_LAT			= "41.506531,"; 
-	public final static String TOMTOM_BRAGA_MIN_LON			= "-8.451247,"; 
-	public final static String TOMTOM_BRAGA_MAX_LAT			= "41.574115,"; 
-	public final static String TOMTOM_BRAGA_MAX_LON			= "-8.371253/"; 
+	//public final static String TOMTOM_BRAGA_MIN_LAT			= "41.506531,"; 
+	//public final static String TOMTOM_BRAGA_MIN_LON			= "-8.451247,"; 
+	//public final static String TOMTOM_BRAGA_MAX_LAT			= "41.574115,"; 
+	//public final static String TOMTOM_BRAGA_MAX_LON			= "-8.371253/"; 
 	public final static String TOMTOM_PORTO_MIN_LAT			= "41.141069,"; 
 	public final static String TOMTOM_PORTO_MIN_LON			= "-8.647017,"; 
 	public final static String TOMTOM_PORTO_MAX_LAT			= "41.180244,"; 
@@ -118,7 +117,7 @@ public final class Consts {
 
 	//Traffic Flow Constants
 	public final static String TOMTOM_FLOW_STYLE			= "absolute/";
-	public final static String TOMTOM_BRAGA_POINT			= "&point=41.546007,-8.419903";
+	//public final static String TOMTOM_BRAGA_POINT			= "&point=41.546007,-8.419903";
 	public final static String TOMTOM_PORTO_POINT			= "&point=41.158210,-8.631660";
 	public final static String TOMTOM_FLOW_UNIT				= "&unit=KMPH";
 	
@@ -153,5 +152,21 @@ public final class Consts {
 	public final static String JSON_CONFIDENCE				= "confidence";
 	public final static String JSON_REALTIME_RATIO			= "realtimeRatio";
 	public final static String JSON_COORDINATE				= "coordinate";
+	
+    /**
+     * CROWD SENSING DATA
+     * */
+    //public final static double CS_BRAGA_LAT                 = 41.574115; 
+    //public final static double CS_BRAGA_LON                 = -8.371253; 
+    
+    //Crowd Data JSON tags
+    public final static String JSON_TYPE                    = "type";
+    public final static String JSON_DEVICE_ID               = "deviceId";
+    public final static String JSON_TIMESTAMP               = "timestamp";
+    public final static String JSON_SV                      = ".sv";
+    public final static String JSON_PROBES                  = "probes";
+    public final static String JSON_MAC                     = "mac";
+    public final static String JSON_RSSI                    = "rssi";
+    public final static String JSON_PREVIOUS_MILL_DETECTED  = "previousMillisDetected";
 	
 }

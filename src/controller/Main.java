@@ -22,11 +22,14 @@ public class Main {
 		OpenAQClient.logInfo = true;
 		TomtomClient.logInfo = true;
 		
-		//TomtomClient.cityMinLat = Consts.TOMTOM_PORTO_MIN_LAT;
-		//TomtomClient.cityMinLon = Consts.TOMTOM_PORTO_MIN_LON;
-		//TomtomClient.cityMaxLat = Consts.TOMTOM_PORTO_MAX_LAT;
-		//TomtomClient.cityMaxLon = Consts.TOMTOM_PORTO_MAX_LON;	
-		//TomtomClient.flowCityPoint = Consts.TOMTOM_PORTO_POINT;
+		TomtomClient.cityMinLat = Consts.TOMTOM_PORTO_MIN_LAT;
+		TomtomClient.cityMinLon = Consts.TOMTOM_PORTO_MIN_LON;
+		TomtomClient.cityMaxLat = Consts.TOMTOM_PORTO_MAX_LAT;
+		TomtomClient.cityMaxLon = Consts.TOMTOM_PORTO_MAX_LON;	
+		TomtomClient.flowCityLat = "41.158210";  
+        TomtomClient.flowCityLon = "-8.63166";
+		
+        //OwmClient.owmApiKey = owmApiKey;
 		
 		/*Call APIs*/
 		//Weather w = OwmClient.getCurrentWeather();							//OK - 20180517
@@ -34,6 +37,8 @@ public class Main {
 		
 		//List<WeatherForecast> wf = OwmClient.getWeatherForecast();			//OK - 20180517
 		//System.out.println(wf.toString());
+        
+        //System.out.println(Functions.getCurrentLuminosity().toString());      //OK - 20180517
 		
 		//PollutionOWM uv = OwmClient.getCurrentUltraviolet();					//OK - 20180517
 		//System.out.println(uv.toString());
@@ -53,14 +58,12 @@ public class Main {
 		//PollutionOWM p3 = OwmClient.getCurrentNitrogenDioxide();				//OK - 20180517 (but getting 504 Gateway Time-out)
 		//System.out.println(p3.toString());
 		
-		List<PollutionAQ> mes = OpenAQClient.getCurrentMeasurements();			//OK - 20180517
-		System.out.println(mes.toString());
-		
-		//System.out.println(Functions.getCurrentLuminosity().toString());		//OK - 20180517
+		//List<PollutionAQ> mes = OpenAQClient.getCurrentMeasurements();		//OK - 20180517
+		//System.out.println(mes.toString());
 		
 
-		//List<TrafficIncident> ti = TomtomClient.getTrafficIncidents();		//OK - 20180517
-		//System.out.println(ti.toString());
+		List<TrafficIncident> ti = TomtomClient.getTrafficIncidents();			//OK - 20180517
+		System.out.println(ti.toString());
 
 		//List<TrafficFlow> tf = TomtomClient.getTrafficFlow();					//OK - 20180517
 		//System.out.println(tf.toString());

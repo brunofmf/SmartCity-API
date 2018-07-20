@@ -7,6 +7,7 @@ public abstract class AbstractPollution {
 	protected double lon;
 	protected long date;
 	protected String unit;
+	protected String city;
 	
 	//Constructor
 	public AbstractPollution(double lat, double lon, long date, String unit) {
@@ -14,6 +15,7 @@ public abstract class AbstractPollution {
 		this.lon = lon;
 		this.date = date;
 		this.unit = unit;
+		this.city = "";
 	}
 	
 	public double getLat() {
@@ -31,7 +33,11 @@ public abstract class AbstractPollution {
 	public String getUnit() {
 		return unit;
 	}
-	
+
+    public String getCity() {
+        return city;
+    }
+    
 	public void setLat(double lat) {
 		this.lat = lat;
 	}
@@ -47,7 +53,11 @@ public abstract class AbstractPollution {
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
-	
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+    
 	public abstract String toString();
 	
 }

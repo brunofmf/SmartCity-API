@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import model.crowdsensing.CrowdData;
 import model.pollution.openaq.PollutionAQ;
 import model.pollution.owm.PollutionOWM;
 import model.traffic.tomtom.TrafficFlow;
@@ -444,4 +445,37 @@ public class JsonHandler {
 		
 		return result;
 	}
+
+    public static List<CrowdData> getCrowdData(JSONObject j) {      
+        List<CrowdData> result = new ArrayList<>();
+
+        String type = "", deviceId = "", mac = "";
+        int rssi = -1;
+        long previousMillisDetected = -1, dataCreated = -1;
+
+        if(j != null) {
+            type = j.optString(Consts.JSON_TYPE);
+            deviceId = j.optString(Consts.JSON_DEVICE_ID);
+            
+            JSONObject timestamp = j.optJSONObject(Consts.JSON_TIMESTAMP);
+            if(timestamp != null) {
+                dataCreated = timestamp.optLong(Consts.JSON_SV);
+            }
+            
+            JSONArray probesArray = j.optJSONArray(Consts.JSON_PROBES);
+            if(probesArray != null) {
+                for(int i=0; i < probesArray.length(); i++) {
+                    JSONObject probesArrayElem = probesArray.optJSONObject(i);
+                    if(probesArrayElem != null) {
+                        mac = probesArrayElem.optString(Consts.JSON_MAC);
+                        rssi = probesArrayElem.optInt(Consts.JSON_RSSI);
+                        previousMillisDetected = probesArrayElem.optLong(Consts.JSON_PREVIOUS_MILL_DETECTED);
+                        result.add(new CrowdData(type, deviceId, rssi, mac, previousMillisDetected, dataCreated, -99, -99));
+                    }
+                }
+            }
+        }
+        
+        return result;
+    }
 }

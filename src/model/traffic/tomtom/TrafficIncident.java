@@ -57,7 +57,7 @@ public class TrafficIncident extends AbstractTrafficIncident{
 	public TrafficIncident(double trafficLat, double trafficLon, long date, String trafficModelId, String id, double iconLat, double iconLon,
 			int incidentCategory, int magnitudeOfDelay, int clusterSize, String description, String causeOfAccident,
 			String from, String to, int length, int delayInSeconds, String affectedRoads) {
-		super(trafficLat, trafficLon, date);
+		super(trafficLat, trafficLon, date, "TBD");
 		this.trafficModelId = trafficModelId;
 		this.id = id;
 		this.iconLat = iconLat;

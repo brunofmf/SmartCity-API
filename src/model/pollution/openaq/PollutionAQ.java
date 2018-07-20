@@ -92,12 +92,19 @@ public class PollutionAQ extends AbstractPollution{
 	}
 
 	public double getValue() {
-		return value;
+	    if(!Double.isNaN(value))
+	        return value;
+	    else
+	        return -99;
 	}
 
 	public String getSourceName() {
 		return sourceName;
 	}
+
+    public String getLastUpdated() {
+        return lastUpdated;
+    }
 
 	public void setParameter(PollutionType parameter) {
 		this.parameter = parameter;
@@ -110,6 +117,10 @@ public class PollutionAQ extends AbstractPollution{
 	public void setSourceName(String sourceName) {
 		this.sourceName = sourceName;
 	}
+
+    public void setLastUpdated(String lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
 
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

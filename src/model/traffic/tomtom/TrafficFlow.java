@@ -34,7 +34,7 @@ public class TrafficFlow extends AbstractTrafficIncident {
 	
 	public TrafficFlow(double trafficLat, double trafficLon, long date, String functionalRoadClass, int currentSpeed,
 			int freeFlowSpeed, int currentTravelTime, int freeFlowTravelTime, double confidence, double realtimeRatio) {
-		super(trafficLat, trafficLon, date);
+		super(trafficLat, trafficLon, date, "TBD");
 		this.functionalRoadClass = functionalRoadClass;
 		switch (this.functionalRoadClass) {
 		    case "FRC0":
@@ -95,11 +95,17 @@ public class TrafficFlow extends AbstractTrafficIncident {
 	}
 
 	public double getConfidence() {
-		return confidence;
+	    if(!Double.isNaN(confidence))
+	        return confidence;
+	    else
+	        return -99;
 	}
 
 	public double getRealtimeRatio() {
-		return realtimeRatio;
+        if(!Double.isNaN(realtimeRatio))
+            return realtimeRatio;
+        else
+            return -99;
 	}
 
 	public void setFunctionalRoadClass(String functionalRoadClass) {
