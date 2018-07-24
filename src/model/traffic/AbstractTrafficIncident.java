@@ -7,6 +7,7 @@ public abstract class AbstractTrafficIncident {
 	protected double trafficLon;
 	protected long date;
     protected String cityName;
+    protected int citySeqNum;
 	
 	//Constructor
 	public AbstractTrafficIncident(double trafficLat, double trafficLon, long date, String cityName) {
@@ -14,6 +15,7 @@ public abstract class AbstractTrafficIncident {
 		this.trafficLon = trafficLon;
 		this.date = date;
 		this.cityName = cityName;
+        this.citySeqNum = 1;
 	}
 	
 	public double getTrafficLat() {
@@ -31,6 +33,10 @@ public abstract class AbstractTrafficIncident {
     public String getCityName() {
         return cityName;
     }
+    
+    public int getCitySeqNum() {
+        return citySeqNum;
+    }
 
 	public void setTrafficLat(double trafficLat) {
 		this.trafficLat = trafficLat;
@@ -47,6 +53,10 @@ public abstract class AbstractTrafficIncident {
 	public void setCityName(String cityName) {
 	    this.cityName = cityName;
 	}
+    
+    public void setCitySeqNum(int citySeqNum) {
+        this.citySeqNum = citySeqNum;
+    }
 
 	public abstract String toString();
 }

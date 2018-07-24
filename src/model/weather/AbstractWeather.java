@@ -12,6 +12,7 @@ public abstract class AbstractWeather {
 	protected int rain;
 	protected long calculationDate;
 	protected String cityName;
+    protected int citySeqNum;
 	
 	public AbstractWeather(String weatherDescription, int temperature, int pressure, int humidity, int windSpeed,
 			int clouds, int rain, long calculationDate, String cityName) {
@@ -24,6 +25,7 @@ public abstract class AbstractWeather {
 		this.rain = rain;
 		this.calculationDate = calculationDate;
 		this.cityName = cityName;
+		this.citySeqNum = 1;
 	}
 	
 	public String getWeatherDescription() {
@@ -61,6 +63,10 @@ public abstract class AbstractWeather {
 	public String getCityName() {
 		return cityName;
 	}
+    
+    public int getCitySeqNum() {
+        return citySeqNum;
+    }
 	
 	public void setWeatherDescription(String weatherDescription) {
 		this.weatherDescription = weatherDescription;
@@ -97,6 +103,10 @@ public abstract class AbstractWeather {
 	public void setCityName(String cityName) {
 		this.cityName = cityName;
 	}
+    
+    public void setCitySeqNum(int citySeqNum) {
+        this.citySeqNum = citySeqNum;
+    }
 		
 	public abstract String toString();
 }

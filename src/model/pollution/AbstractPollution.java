@@ -8,6 +8,7 @@ public abstract class AbstractPollution {
 	protected long date;
 	protected String unit;
 	protected String city;
+    protected int citySeqNum;
 	
 	//Constructor
 	public AbstractPollution(double lat, double lon, long date, String unit) {
@@ -16,6 +17,7 @@ public abstract class AbstractPollution {
 		this.date = date;
 		this.unit = unit;
 		this.city = "";
+        this.citySeqNum = 1;
 	}
 	
 	public double getLat() {
@@ -38,6 +40,10 @@ public abstract class AbstractPollution {
         return city;
     }
     
+    public int getCitySeqNum() {
+        return citySeqNum;
+    }
+    
 	public void setLat(double lat) {
 		this.lat = lat;
 	}
@@ -56,6 +62,10 @@ public abstract class AbstractPollution {
 
     public void setCity(String city) {
         this.city = city;
+    }
+    
+    public void setCitySeqNum(int citySeqNum) {
+        this.citySeqNum = citySeqNum;
     }
     
 	public abstract String toString();
